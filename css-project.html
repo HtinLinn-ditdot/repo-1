@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500;600&display=swap" rel="stylesheet"> 
+	<style type="text/css">
+
+
+		* {
+			font-family: 'Baloo Paaji 2', cursive;
+			color: #581b98;
+			border-color: #581b98;
+			box-sizing: border-box;
+		}
+
+		body{
+			background-color: #cabbe9;
+		}
+
+		.full-form{
+			background-color: #cabbe9;
+			width: 350px;
+			margin-left: 25%;
+			border-radius: 10px;
+			margin: 200px auto;
+			border-style: solid;
+		}
+		.head{
+			background-color: #cabbe9;
+			font-size: 1.5em;
+			margin:auto;
+			text-transform: uppercase;
+		}
+
+		.form-input input{
+			width:100%;
+			border: 2px solid;
+			border-radius: 20px;
+			margin-bottom: 20px;
+			box-sizing: border-box;
+			border-color: #cabbe9;
+			background-color: #fdfdfd;
+			padding-left: 10px
+		}
+
+		input:focus{
+			outline:none;
+		}
+
+		.btn{
+			background-color: #a6acec;
+			border-color: #cabbe9;
+			margin-left: 10px;
+			margin-right: 10px;
+			border-radius: 10px;
+			border-style: solid;
+			color: white;
+		}
+
+		.text-light{
+			color: #fdfdfd;
+		}
+
+		
+		
+	</style>
+</head>
+<body>
+
+<form>
+	<fieldset class="full-form">
+		<legend class="head">
+				Login Form
+			
+		</legend>
+		<div class="form-input">
+			<label>
+				<i class="fas fa-user-circle"></i>
+				<label for="focus-on-me">Username:</label>
+				<input type="text" name="focus-on-me" autofocus="" placeholder="Username" id="focus-on-me" required="">
+				<br>
+				<i class="fas fa-key"></i>
+				Password:
+				<input type="Password" name="">
+				<br>
+				<button class="btn"><i class="fas fa-sign-in-alt text-light"></i> Login</button>
+				<a href="#" class="register">New Here?</a>
+			</label>
+		</div>
+	</fieldset>
+</form>
+
+
+</body>
+</html>

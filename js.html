@@ -1,0 +1,35 @@
+<script type="text/javascript">
+	
+	let x = 10
+	let y = 20
+	let z = 3
+
+	let arr = ['apple','orange','pee']
+
+	let mySelf = {
+		name:"Htin Linn",
+		age: 16,
+		health: "what"
+	}
+
+	let person2 = {
+		name:"Ohanae",
+		age: 18,
+		health: "good"
+	}
+
+	let lala = ['age', 'potata', 'sneeze']
+
+	function myFun(name){
+		return `I am ${name[0]}, ${name[1]}, and ${name[2]}`
+	}
+
+
+	function DOB(person = {name:'Khris', age:'24', health:'healthy'}){
+
+		return `${person.name} is born in ` + (2019 - person.age) + myFun(arr)
+	}
+
+	let OhaneYOB = DOB(person2) 
+
+</script>

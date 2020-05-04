@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        body{
+            background-color: black;
+            font-size: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .calculator{
+            margin: auto;
+            width: 400px;
+        }
+
+        .display-pad{
+            text-align: right;
+            font-size: 60px;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 300;
+            height: 70px;
+        }
+
+        .key-pad tr:first-child .keys{
+            background-color: #a5a5a5;
+        }
+
+        .key-pad tr td:last-child .keys{
+            background-color: orange;
+        }
+        
+        .keys{
+            font-size: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            width: 90px;
+            height: 90px;
+            box-sizing: border-box;
+            line-height: 90px;
+            border-style: solid;
+            margin: 5px;
+            text-align: center;
+            border-radius: 90px;
+            background-color: #333333;
+            color: #fff;
+            border-width: 0px;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .keys:focus{
+            outline: none;
+        }
+    </style>
+    <title>Calculator</title>
+</head>
+<body>
+    
+    <div class="calculator">
+        <h1 class="display-pad" id="display-pad">000</h1>
+        <table class="key-pad" id="key-pad">
+            <tr>
+                <td><button class="keys" onclick="clearNumbers()">AC</button></td>
+                <td><button class="keys" onclick="">C</button></td>
+                <td><button class="keys" onclick="displayNumber('%')">%</button></td>
+                <td><button class="keys" onclick="displayNumber('/')">&#247;</button></td>
+            </tr>
+            <tr>
+                <td><button class="keys" onclick="displayNumber('7')">7</button></td>
+                <td><button class="keys" onclick="displayNumber('8')">8</button></td>
+                <td><button class="keys" onclick="displayNumber('9')">9</button></td>
+                <td><button class="keys" onclick="displayNumber('*')">x</button></td>
+            </tr>
+            <tr>
+                <td><button class="keys" onclick="displayNumber('4')">4</button></td>
+                <td><button class="keys" onclick="displayNumber('5')">5</button></td>
+                <td><button class="keys" onclick="displayNumber('6')">6</button></td>
+                <td><button class="keys" onclick="displayNumber('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button class="keys" onclick="displayNumber('1')">1</button></td>
+                <td><button class="keys" onclick="displayNumber('2')">2</button></td>
+                <td><button class="keys" onclick="displayNumber('3')">3</button></td>
+                <td><button class="keys" onclick="displayNumber('+')">+</button></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button class="keys" onclick="displayNumber('0')" style="width: 190px;">0</button></td>
+                <td><button class="keys" onclick="displayNumber('.')">.</button></td>
+                <td><button class="keys" onclick="calculate()">=</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        let display = document.getElementById("display-pad")
+
+        function displayNumber(x){
+            display.innerHTML += x;
+        };
+
+        function clearNumbers(){
+            display.innerHTML = "";
+        }
+
+        function calculate(){
+            let number = display.innerHTML;
+            display.innerHTML = eval(number)
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Lobster&family=Satisfy&display=swap" rel="stylesheet">
+    <title>Input</title>
+    <style>
+        * {
+            font-family: 'Comic Neue', cursive;
+        }
+
+        body{
+            background-color:#d7c1e0;
+        }
+
+        .todo{
+            margin-top: 5px;
+        }
+
+        .field{
+            border: #584f84 solid 2px;
+            width: 300px;
+            height: 500px;
+            margin: 50px auto;
+            border-radius: 10px;
+        }
+
+        .title{
+            font-family: 'Satisfy', cursive;
+            font-size: larger;
+            text-align: left;
+            color: #584f84;
+            font-weight: bold;
+        }
+
+
+        .input{
+            border-radius: 10px;
+            border-style: solid;
+            border-color: #584f84;
+            border-width: 1.5px;
+            padding-left: 10px;
+            background-color: #fcefee;
+            margin-right: 10px;
+        }
+
+
+        .input:focus{
+            outline: none;
+            border-width: 2px;
+            margin-right: 9px;
+        }
+
+        .btn{
+            height: 20px;
+            width: 20px;
+            padding: 1px;
+            border-radius: 50%;
+            border-style: solid;
+            color: #584f84;
+            font-size: small;
+        } 
+
+        .btn:focus{
+            outline: none;
+        }
+
+        .del-btn{
+            margin-top: 5px;
+            margin-left: 80%;
+            background-color:#d7c1e0;
+            border: #d7c1e0;
+        }
+
+        .edit-btn{
+            margin-left: 5px;
+            background-color: #d7c1e0;
+            border: #d7c1e0;
+        }
+
+        .done-btn{
+            background-color: #fcefee;
+            border: none;
+        }
+
+        .list-item{
+            background-color: #fcefee;
+            list-style-type:none;
+            padding: 10px 5px 10px 5px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        .list{
+            padding-left: 0px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="background">
+        <fieldset class="field">
+            <legend class="title">To-do List</legend>
+            <div class="todo">
+                <div class="add-box" id="input"> 
+                    <input type="text" id="inputText" class="input">
+                    <button class="btn" id="addBtn" onclick="addList()"><i class="fas fa-plus"></i></button>
+                </div>
+                <ul class="list" id="list">
+                </ul>
+            </div>
+        </fieldset>
+    </div>
+
+    <script>
+
+        let inputText = document.getElementById("inputText");
+        let list = document.getElementById("list");
+        let minimun_text_length = 3;
+        let i = 1;
+
+
+        function addList(){
+            let innerText = textFilter(inputText.value);
+            if(innerText){
+                list.innerHTML += showList(innerText);
+                inputText.value = "";
+                i ++;
+            }
+        }
+
+
+        function showList(text){
+            return `
+                <li class="list-item" id="list${i}">
+                    <button class="btn done-btn" id="done-btn${i}" onclick="doneList(${i})"><i class="fas fa-check"></i></button>
+                    <span class="listText" id="listText${i}">${text}</span>
+                    <br>
+                    <button class="btn del-btn" onclick="deleteList(${i})"><i class="fas fa-trash-alt"></i></button>
+                    <button class="btn edit-btn" onclick="editList(${i})"><i class="fas fa-pencil-alt"></i></button>
+                </li>
+                `
+        }
+
+
+        function deleteList(listID){
+            let deleteConfirm = confirm("Are you sure?")
+            let current = document.getElementById(`list${listID}`)
+            let currentText = document.getElementById(`listText${listID}`).innerHTML
+
+            if(deleteConfirm){
+                list.removeChild(current);
+            }else{
+                console.log("Cancelled")
+            }
+        }
+
+
+        function editList(listID){
+            let current = document.getElementById(`listText${listID}`);
+            let newText = prompt("Edit to...", current.innerHTML.slice(0,-1));
+            if(textFilter(newText)){
+                current.innerHTML = textFilter(newText)
+            }
+        }
+
+
+        function doneList(listID){
+            let current = document.getElementById(`listText${listID}`);
+            let button = document.getElementById(`done-btn${listID}`);
+            if (current.style.textDecoration == "line-through"){
+                current.style.textDecoration = "none";
+                button.innerHTML = `<i class="fas fa-check"></i>`;
+            }else{
+                current.style.textDecoration = "line-through"
+                button.innerHTML = `<i class="fas fa-times"></i>`
+            }
+        }
+
+
+        function textFilter(text){
+            if(text){
+                if (text.length >= minimun_text_length){
+                    return text.slice(0,1).toUpperCase()+text.slice(1)+".";
+                }
+                else{
+                    alert(`Input text cannot be lower than ${minimun_text_length}`)
+                    return false
+                }
+            }else{
+                alert("Input text cannot be empty.");
+                return false;
+            }
+        }
+
+        input.addEventListener("keyup", function (e){
+            if(e.keyCode == 13){
+                addList()
+            }
+        })
+
+    </script>
+</body>
+</html>

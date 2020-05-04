@@ -1,0 +1,15 @@
+html + tab
+lorem + tab = for a wall of text
+ctrl + d = multiple selection
+ctrl + n = new sheet
+ctrl + enter =  new line w/t breaking
+ctrl + z, ctrl + y
+ctrl + c, ctrl + v, ctrl + x
+tab = 4 spaces
+ctrl + f = find
+ctrl + shift +  n = new folder
+home & end keys = end and beginning of paragraph
+
+Notes~~
+ - <p></p> commands will only create one space b/t words no matter how much you put in.
+ - It also ignores linebreaks, thus the <br>, <wbr> have to be used.
